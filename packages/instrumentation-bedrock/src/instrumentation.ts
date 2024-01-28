@@ -70,12 +70,14 @@ export class BedrockInstrumentation extends InstrumentationBase<any> {
       this.wrapperMethod(),
     );
     console.log(">>> wrap after");
+    return module;
   }
 
   private unwrap(module: typeof bedrock) {
     console.log(">>> unwrap");
     this._unwrap(module.BedrockRuntime.prototype, "invokeModel");
     console.log(">>> unwrap after");
+    return module;
   }
 
   private wrapperMethod() {
